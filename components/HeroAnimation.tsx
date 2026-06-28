@@ -157,13 +157,6 @@ export default function HeroAnimation({ onStart }: Props) {
         </h1>
 
         <p
-          className="font-nunito mb-1 mt-1"
-          style={{ fontSize: 'clamp(0.9rem, 2vw, 1.1rem)', color: 'rgba(255,215,0,0.5)', letterSpacing: '0.1em' }}
-        >
-          چابی
-        </p>
-
-        <p
           className="font-cinzel font-semibold mb-4 mt-4"
           style={{
             fontSize: 'clamp(1rem, 3vw, 1.6rem)',

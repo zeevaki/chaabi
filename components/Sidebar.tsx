@@ -28,9 +28,7 @@ export default function Sidebar() {
     <div className="flex flex-col h-full">
       {/* Logo */}
       <div className="px-6 py-5 border-b border-white/8">
-        <Link href="/" onClick={() => setMobileOpen(false)}>
-          <p className="text-white/40 font-nunito text-xs">کھل جا سم سم</p>
-        </Link>
+        <Link href="/" onClick={() => setMobileOpen(false)} className="block h-4" />
       </div>
 
       {/* Main nav */}
