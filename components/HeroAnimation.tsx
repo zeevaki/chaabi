@@ -172,23 +172,6 @@ export default function HeroAnimation({ onStart }: Props) {
           opacity: fadeOut ? 0 : 1, transition: 'opacity 0.5s ease',
         }}
       >
-        {/* CHAABI title */}
-        <h1
-          className="font-cinzel font-black"
-          style={{
-            fontSize: 'clamp(2.5rem, 7vw, 5.5rem)',
-            letterSpacing: '0.1em',
-            background: 'linear-gradient(45deg, #ffd700, #ff9d00)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            filter: 'drop-shadow(0 0 20px rgba(255,215,0,0.5))',
-            lineHeight: 1,
-            marginBottom: '28px',
-          }}
-        >
-          CHAABI
-        </h1>
-
         {/* Ornate key image — the click target */}
         <button
           onClick={openSesame}

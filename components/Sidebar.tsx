@@ -27,8 +27,14 @@ export default function Sidebar() {
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
       {/* Logo */}
-      <div className="px-6 py-5 border-b border-white/8">
-        <Link href="/" onClick={() => setMobileOpen(false)} className="block h-4" />
+      <div className="px-4 py-5 border-b border-white/8">
+        <button
+          onClick={() => { window.location.href = '/' }}
+          className="font-cinzel font-black text-xl tracking-widest glow-gold text-left w-full"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#FFD700' }}
+        >
+          CHAABI
+        </button>
       </div>
 
       {/* Main nav */}
