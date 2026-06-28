@@ -182,6 +182,7 @@ export default function HeroAnimation({ onStart }: Props) {
             width: 'clamp(80px, 12vw, 140px)',
             position: 'relative',
             filter: 'drop-shadow(0 0 20px rgba(255,215,0,0.7)) drop-shadow(0 0 40px rgba(255,165,0,0.4))',
+            mixBlendMode: 'screen',
           }}
           aria-label="Enter Chaabi"
         >
