@@ -1,0 +1,71 @@
+{
+  "language": {
+    "select": "选择你的语言",
+    "continue": "进入代码的世界！",
+    "english": "English",
+    "urdu": "اردو",
+    "spanish": "Español",
+    "hindi": "हिंदी",
+    "chinese": "中文",
+    "arabic": "العربية"
+  },
+  "landing": {
+    "tagline": "芝麻开门",
+    "subtitle": "解锁代码",
+    "description": "通往数字世界的神奇钥匙。完成任务，赢取钥匙，成为真正的开发者！",
+    "startQuest": "开始你的冒险",
+    "track1": "基础课程",
+    "track1desc": "学习 HTML、CSS 和 JavaScript",
+    "track2": "进阶课程",
+    "track2desc": "掌握 React 和 Next.js",
+    "keysEarned": "获得的钥匙",
+    "xpEarned": "总经验值"
+  },
+  "worlds": {
+    "html": { "name": "HTML 世界", "subtitle": "第一扇门", "desc": "构建每个网站的骨架" },
+    "css": { "name": "CSS 世界", "subtitle": "第二扇门", "desc": "用色彩和风格装扮你的世界" },
+    "javascript": { "name": "JavaScript 世界", "subtitle": "第三扇门", "desc": "用魔法让你的页面活起来" },
+    "react": { "name": "React 世界", "subtitle": "第四扇门", "desc": "用组件构建强大的应用" },
+    "nextjs": { "name": "Next.js 世界", "subtitle": "第五扇门", "desc": "把真实应用发布到世界" },
+    "locked": "已锁定",
+    "missions": "个任务",
+    "enterWorld": "进入世界",
+    "completePrevious": "完成前面的世界以解锁",
+    "level1": "基础课程",
+    "level2": "进阶课程"
+  },
+  "mission": {
+    "mission": "任务",
+    "of": "/",
+    "objective": "你的任务",
+    "concept": "你在学什么",
+    "hint": "需要提示？",
+    "submit": "提交代码",
+    "checking": "检查中...",
+    "tryAgain": "再试一次",
+    "backToWorld": "返回世界地图",
+    "xpReward": "经验奖励"
+  },
+  "genie": {
+    "title": "代码精灵",
+    "placeholder": "问我任何关于编程的问题...",
+    "send": "发送",
+    "thinking": "正在摩擦神灯...",
+    "offline": "精灵在休息！连接 AI API 来唤醒我。🧞‍♂️",
+    "greeting": "你好！我是你的代码精灵。有什么问题尽管问！"
+  },
+  "celebration": {
+    "title": "芝麻开门！",
+    "subtitle": "你获得了一把新钥匙！",
+    "xpEarned": "获得经验值",
+    "nextMission": "下一个任务 →",
+    "backToMap": "返回地图",
+    "worldComplete": "🏆 世界完成！",
+    "worldCompleteDesc": "你已掌握这个世界！"
+  },
+  "nav": {
+    "home": "主页",
+    "myKeys": "我的钥匙",
+    "changeLanguage": "语言"
+  }
+}

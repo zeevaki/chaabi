@@ -1,0 +1,71 @@
+{
+  "language": {
+    "select": "Choose Your Language",
+    "continue": "Enter the World of Code!",
+    "english": "English",
+    "urdu": "اردو",
+    "spanish": "Español",
+    "hindi": "हिंदी",
+    "chinese": "中文",
+    "arabic": "العربية"
+  },
+  "landing": {
+    "tagline": "Khul Ja Sim Sim",
+    "subtitle": "Unlock the Code",
+    "description": "Your magical key to the digital world. Complete quests, earn keys, and become a real developer!",
+    "startQuest": "Start Your Quest",
+    "track1": "Foundation Track",
+    "track1desc": "Learn HTML, CSS & JavaScript",
+    "track2": "Builder Track",
+    "track2desc": "Master React & Next.js",
+    "keysEarned": "Keys Earned",
+    "xpEarned": "Total XP"
+  },
+  "worlds": {
+    "html": { "name": "HTML World", "subtitle": "The First Door", "desc": "Build the skeleton of every website" },
+    "css": { "name": "CSS World", "subtitle": "The Second Door", "desc": "Paint your world with colors and style" },
+    "javascript": { "name": "JavaScript World", "subtitle": "The Third Door", "desc": "Bring your pages to life with magic" },
+    "react": { "name": "React World", "subtitle": "The Fourth Door", "desc": "Build powerful apps with components" },
+    "nextjs": { "name": "Next.js World", "subtitle": "The Fifth Door", "desc": "Ship real apps to the world" },
+    "locked": "Locked",
+    "missions": "missions",
+    "enterWorld": "Enter World",
+    "completePrevious": "Complete previous worlds to unlock",
+    "level1": "Foundation Track",
+    "level2": "Builder Track"
+  },
+  "mission": {
+    "mission": "Mission",
+    "of": "of",
+    "objective": "Your Mission",
+    "concept": "What You're Learning",
+    "hint": "Need a Hint?",
+    "submit": "Submit Code",
+    "checking": "Checking...",
+    "tryAgain": "Try Again",
+    "backToWorld": "Back to World Map",
+    "xpReward": "XP Reward"
+  },
+  "genie": {
+    "title": "The Coding Genie",
+    "placeholder": "Ask me anything about coding...",
+    "send": "Ask",
+    "thinking": "Rubbing the lamp...",
+    "offline": "The Genie is resting! Connect an AI API to wake me up. 🧞‍♂️",
+    "greeting": "Salam! I'm your coding genie. Ask me anything!"
+  },
+  "celebration": {
+    "title": "Khul Ja Sim Sim!",
+    "subtitle": "You earned a new key!",
+    "xpEarned": "XP Earned",
+    "nextMission": "Next Mission →",
+    "backToMap": "Back to Map",
+    "worldComplete": "🏆 World Complete!",
+    "worldCompleteDesc": "You've mastered this world!"
+  },
+  "nav": {
+    "home": "Home",
+    "myKeys": "My Keys",
+    "changeLanguage": "Language"
+  }
+}

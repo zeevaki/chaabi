@@ -1,0 +1,71 @@
+{
+  "language": {
+    "select": "اپنی زبان چنیں",
+    "continue": "کوڈنگ کی دنیا میں قدم رکھیں!",
+    "english": "English",
+    "urdu": "اردو",
+    "spanish": "Español",
+    "hindi": "हिंदी",
+    "chinese": "中文",
+    "arabic": "العربية"
+  },
+  "landing": {
+    "tagline": "کھل جا سم سم",
+    "subtitle": "کوڈ کو کھولو",
+    "description": "ڈیجیٹل دنیا کی آپ کی جادوئی چابی۔ مشن مکمل کریں، چابیاں کمائیں، اور اصلی ڈویلپر بنیں!",
+    "startQuest": "اپنا سفر شروع کریں",
+    "track1": "بنیادی ٹریک",
+    "track1desc": "HTML، CSS اور JavaScript سیکھیں",
+    "track2": "بلڈر ٹریک",
+    "track2desc": "React اور Next.js مہارت حاصل کریں",
+    "keysEarned": "چابیاں کمائی",
+    "xpEarned": "کل XP"
+  },
+  "worlds": {
+    "html": { "name": "HTML کی دنیا", "subtitle": "پہلا دروازہ", "desc": "ہر ویب سائٹ کا ڈھانچہ بنائیں" },
+    "css": { "name": "CSS کی دنیا", "subtitle": "دوسرا دروازہ", "desc": "رنگ اور انداز سے اپنی دنیا سجائیں" },
+    "javascript": { "name": "JavaScript کی دنیا", "subtitle": "تیسرا دروازہ", "desc": "اپنے صفحات کو جادو سے زندہ کریں" },
+    "react": { "name": "React کی دنیا", "subtitle": "چوتھا دروازہ", "desc": "کمپوننٹس سے طاقتور ایپس بنائیں" },
+    "nextjs": { "name": "Next.js کی دنیا", "subtitle": "پانچواں دروازہ", "desc": "اصلی ایپس دنیا میں بھیجیں" },
+    "locked": "بند",
+    "missions": "مشن",
+    "enterWorld": "دنیا میں داخل ہوں",
+    "completePrevious": "پہلی دنیائیں مکمل کریں",
+    "level1": "بنیادی ٹریک",
+    "level2": "بلڈر ٹریک"
+  },
+  "mission": {
+    "mission": "مشن",
+    "of": "کا",
+    "objective": "آپ کا مشن",
+    "concept": "آپ کیا سیکھ رہے ہیں",
+    "hint": "اشارہ چاہیے؟",
+    "submit": "کوڈ جمع کریں",
+    "checking": "جانچ ہو رہی ہے...",
+    "tryAgain": "دوبارہ کوشش کریں",
+    "backToWorld": "دنیا کے نقشے پر واپس",
+    "xpReward": "XP انعام"
+  },
+  "genie": {
+    "title": "کوڈنگ کا جن",
+    "placeholder": "کوڈنگ کے بارے میں کچھ بھی پوچھیں...",
+    "send": "پوچھیں",
+    "thinking": "چراغ رگڑا جا رہا ہے...",
+    "offline": "جن آرام کر رہا ہے! مجھے جگانے کے لیے AI API جوڑیں۔ 🧞‍♂️",
+    "greeting": "السلام! میں آپ کا کوڈنگ جن ہوں۔ کچھ بھی پوچھیں!"
+  },
+  "celebration": {
+    "title": "کھل جا سم سم!",
+    "subtitle": "آپ نے نئی چابی کمائی!",
+    "xpEarned": "XP کمایا",
+    "nextMission": "اگلا مشن ←",
+    "backToMap": "نقشے پر واپس",
+    "worldComplete": "🏆 دنیا مکمل!",
+    "worldCompleteDesc": "آپ نے اس دنیا میں مہارت حاصل کی!"
+  },
+  "nav": {
+    "home": "گھر",
+    "myKeys": "میری چابیاں",
+    "changeLanguage": "زبان"
+  }
+}

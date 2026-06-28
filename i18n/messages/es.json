@@ -1,0 +1,71 @@
+{
+  "language": {
+    "select": "Elige tu Idioma",
+    "continue": "¡Entra al Mundo del Código!",
+    "english": "English",
+    "urdu": "اردو",
+    "spanish": "Español",
+    "hindi": "हिंदी",
+    "chinese": "中文",
+    "arabic": "العربية"
+  },
+  "landing": {
+    "tagline": "Khul Ja Sim Sim",
+    "subtitle": "Desbloquea el Código",
+    "description": "Tu llave mágica al mundo digital. ¡Completa misiones, gana llaves y conviértete en un desarrollador real!",
+    "startQuest": "Comienza tu Aventura",
+    "track1": "Pista Fundamentos",
+    "track1desc": "Aprende HTML, CSS y JavaScript",
+    "track2": "Pista Constructor",
+    "track2desc": "Domina React y Next.js",
+    "keysEarned": "Llaves Ganadas",
+    "xpEarned": "XP Total"
+  },
+  "worlds": {
+    "html": { "name": "Mundo HTML", "subtitle": "La Primera Puerta", "desc": "Construye el esqueleto de cada sitio web" },
+    "css": { "name": "Mundo CSS", "subtitle": "La Segunda Puerta", "desc": "Pinta tu mundo con colores y estilo" },
+    "javascript": { "name": "Mundo JavaScript", "subtitle": "La Tercera Puerta", "desc": "Dale vida a tus páginas con magia" },
+    "react": { "name": "Mundo React", "subtitle": "La Cuarta Puerta", "desc": "Crea apps poderosas con componentes" },
+    "nextjs": { "name": "Mundo Next.js", "subtitle": "La Quinta Puerta", "desc": "Lanza apps reales al mundo" },
+    "locked": "Bloqueado",
+    "missions": "misiones",
+    "enterWorld": "Entrar al Mundo",
+    "completePrevious": "Completa mundos anteriores para desbloquear",
+    "level1": "Pista Fundamentos",
+    "level2": "Pista Constructor"
+  },
+  "mission": {
+    "mission": "Misión",
+    "of": "de",
+    "objective": "Tu Misión",
+    "concept": "Lo que Aprenderás",
+    "hint": "¿Necesitas una Pista?",
+    "submit": "Enviar Código",
+    "checking": "Verificando...",
+    "tryAgain": "Intentar de Nuevo",
+    "backToWorld": "Volver al Mapa",
+    "xpReward": "Recompensa XP"
+  },
+  "genie": {
+    "title": "El Genio del Código",
+    "placeholder": "Pregúntame cualquier cosa...",
+    "send": "Preguntar",
+    "thinking": "Frotando la lámpara...",
+    "offline": "¡El Genio está descansando! Conecta una API de IA para despertarme. 🧞‍♂️",
+    "greeting": "¡Hola! Soy tu genio del código. ¡Pregúntame lo que quieras!"
+  },
+  "celebration": {
+    "title": "¡Khul Ja Sim Sim!",
+    "subtitle": "¡Ganaste una nueva llave!",
+    "xpEarned": "XP Ganado",
+    "nextMission": "Siguiente Misión →",
+    "backToMap": "Volver al Mapa",
+    "worldComplete": "🏆 ¡Mundo Completo!",
+    "worldCompleteDesc": "¡Has dominado este mundo!"
+  },
+  "nav": {
+    "home": "Inicio",
+    "myKeys": "Mis Llaves",
+    "changeLanguage": "Idioma"
+  }
+}

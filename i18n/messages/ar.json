@@ -1,0 +1,71 @@
+{
+  "language": {
+    "select": "اختر لغتك",
+    "continue": "ادخل عالم البرمجة!",
+    "english": "English",
+    "urdu": "اردو",
+    "spanish": "Español",
+    "hindi": "हिंदी",
+    "chinese": "中文",
+    "arabic": "العربية"
+  },
+  "landing": {
+    "tagline": "افتح يا سمسم",
+    "subtitle": "افتح الكود",
+    "description": "مفتاحك السحري للعالم الرقمي. أكمل المهام، اكسب المفاتيح، وكن مطوراً حقيقياً!",
+    "startQuest": "ابدأ مغامرتك",
+    "track1": "المسار الأساسي",
+    "track1desc": "تعلم HTML و CSS و JavaScript",
+    "track2": "مسار البناء",
+    "track2desc": "أتقن React و Next.js",
+    "keysEarned": "المفاتيح المكتسبة",
+    "xpEarned": "إجمالي النقاط"
+  },
+  "worlds": {
+    "html": { "name": "عالم HTML", "subtitle": "الباب الأول", "desc": "ابنِ هيكل كل موقع إلكتروني" },
+    "css": { "name": "عالم CSS", "subtitle": "الباب الثاني", "desc": "لوّن عالمك بالألوان والأناقة" },
+    "javascript": { "name": "عالم JavaScript", "subtitle": "الباب الثالث", "desc": "أحيِ صفحاتك بالسحر" },
+    "react": { "name": "عالم React", "subtitle": "الباب الرابع", "desc": "ابنِ تطبيقات قوية بالمكونات" },
+    "nextjs": { "name": "عالم Next.js", "subtitle": "الباب الخامس", "desc": "أطلق تطبيقات حقيقية للعالم" },
+    "locked": "مغلق",
+    "missions": "مهام",
+    "enterWorld": "ادخل العالم",
+    "completePrevious": "أكمل العوالم السابقة للفتح",
+    "level1": "المسار الأساسي",
+    "level2": "مسار البناء"
+  },
+  "mission": {
+    "mission": "مهمة",
+    "of": "من",
+    "objective": "مهمتك",
+    "concept": "ما ستتعلمه",
+    "hint": "تحتاج تلميحاً؟",
+    "submit": "أرسل الكود",
+    "checking": "جارٍ التحقق...",
+    "tryAgain": "حاول مجدداً",
+    "backToWorld": "العودة لخريطة العالم",
+    "xpReward": "مكافأة النقاط"
+  },
+  "genie": {
+    "title": "جني البرمجة",
+    "placeholder": "اسألني أي شيء عن البرمجة...",
+    "send": "اسأل",
+    "thinking": "يتم حك المصباح...",
+    "offline": "الجني يستريح! اربط واجهة AI لإيقاظي. 🧞‍♂️",
+    "greeting": "مرحباً! أنا جني البرمجة. اسألني ما تشاء!"
+  },
+  "celebration": {
+    "title": "افتح يا سمسم!",
+    "subtitle": "لقد كسبت مفتاحاً جديداً!",
+    "xpEarned": "النقاط المكتسبة",
+    "nextMission": "المهمة التالية ←",
+    "backToMap": "العودة للخريطة",
+    "worldComplete": "🏆 اكتمل العالم!",
+    "worldCompleteDesc": "لقد أتقنت هذا العالم!"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "myKeys": "مفاتيحي",
+    "changeLanguage": "اللغة"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "language": {
+    "select": "अपनी भाषा चुनें",
+    "continue": "कोड की दुनिया में कदम रखें!",
+    "english": "English",
+    "urdu": "اردو",
+    "spanish": "Español",
+    "hindi": "हिंदी",
+    "chinese": "中文",
+    "arabic": "العربية"
+  },
+  "landing": {
+    "tagline": "खुल जा सिम सिम",
+    "subtitle": "कोड अनलॉक करें",
+    "description": "डिजिटल दुनिया की आपकी जादुई चाबी। मिशन पूरे करें, चाबियां कमाएं, और असली डेवलपर बनें!",
+    "startQuest": "अपना सफर शुरू करें",
+    "track1": "बुनियादी ट्रैक",
+    "track1desc": "HTML, CSS और JavaScript सीखें",
+    "track2": "बिल्डर ट्रैक",
+    "track2desc": "React और Next.js में महारत हासिल करें",
+    "keysEarned": "चाबियां कमाई",
+    "xpEarned": "कुल XP"
+  },
+  "worlds": {
+    "html": { "name": "HTML की दुनिया", "subtitle": "पहला दरवाजा", "desc": "हर वेबसाइट का ढांचा बनाएं" },
+    "css": { "name": "CSS की दुनिया", "subtitle": "दूसरा दरवाजा", "desc": "रंग और स्टाइल से अपनी दुनिया सजाएं" },
+    "javascript": { "name": "JavaScript की दुनिया", "subtitle": "तीसरा दरवाजा", "desc": "जादू से अपने पेज जीवंत करें" },
+    "react": { "name": "React की दुनिया", "subtitle": "चौथा दरवाजा", "desc": "कंपोनेंट्स से शक्तिशाली ऐप्स बनाएं" },
+    "nextjs": { "name": "Next.js की दुनिया", "subtitle": "पाँचवां दरवाजा", "desc": "असली ऐप्स दुनिया में भेजें" },
+    "locked": "बंद",
+    "missions": "मिशन",
+    "enterWorld": "दुनिया में प्रवेश करें",
+    "completePrevious": "पिछली दुनियाएं पूरी करें",
+    "level1": "बुनियादी ट्रैक",
+    "level2": "बिल्डर ट्रैक"
+  },
+  "mission": {
+    "mission": "मिशन",
+    "of": "का",
+    "objective": "आपका मिशन",
+    "concept": "आप क्या सीख रहे हैं",
+    "hint": "संकेत चाहिए?",
+    "submit": "कोड जमा करें",
+    "checking": "जांच हो रही है...",
+    "tryAgain": "फिर कोशिश करें",
+    "backToWorld": "वर्ल्ड मैप पर वापस",
+    "xpReward": "XP इनाम"
+  },
+  "genie": {
+    "title": "कोडिंग का जिन्न",
+    "placeholder": "कोडिंग के बारे में कुछ भी पूछें...",
+    "send": "पूछें",
+    "thinking": "दीपक रगड़ा जा रहा है...",
+    "offline": "जिन्न आराम कर रहा है! मुझे जगाने के लिए AI API जोड़ें। 🧞‍♂️",
+    "greeting": "नमस्ते! मैं आपका कोडिंग जिन्न हूं। कुछ भी पूछें!"
+  },
+  "celebration": {
+    "title": "खुल जा सिम सिम!",
+    "subtitle": "आपने नई चाबी कमाई!",
+    "xpEarned": "XP कमाया",
+    "nextMission": "अगला मिशन →",
+    "backToMap": "मैप पर वापस",
+    "worldComplete": "🏆 दुनिया पूरी!",
+    "worldCompleteDesc": "आपने इस दुनिया में महारत हासिल की!"
+  },
+  "nav": {
+    "home": "होम",
+    "myKeys": "मेरी चाबियां",
+    "changeLanguage": "भाषा"
+  }
+}
