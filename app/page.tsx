@@ -1,58 +1,47 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useLocale } from '@/context/LocaleContext'
 import { useProgress } from '@/hooks/useProgress'
 import { worlds } from '@/data/worlds'
-import LanguageDrawer from '@/components/LanguageDrawer'
 import MagicDoor from '@/components/MagicDoor'
-import StarField from '@/components/StarField'
 import Sidebar from '@/components/Sidebar'
+import HeroAnimation from '@/components/HeroAnimation'
 
 export default function HomePage() {
   const { t } = useLocale()
   const { mounted } = useProgress()
-  const [langOpen, setLangOpen] = useState(false)
 
   if (!mounted) return null
 
   const track1 = worlds.filter((w) => w.level === 1)
   const track2 = worlds.filter((w) => w.level === 2)
 
+  const scrollToWorlds = () => {
+    document.getElementById('worlds')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <div className="relative min-h-screen">
-      <StarField />
+    <div className="relative">
       <Sidebar />
-      <LanguageDrawer open={langOpen} onClose={() => setLangOpen(false)} />
 
-      <main className="relative z-10 md:ml-60 flex flex-col items-center pt-12 pb-16 px-6">
+      {/* Full-screen hero animation — sidebar floats above it */}
+      <HeroAnimation onStart={scrollToWorlds} />
 
-        {/* Hero text */}
-        <motion.div
-          className="text-center mb-12 mt-6"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="font-cinzel text-5xl md:text-6xl font-black text-gold glow-gold mb-2">
-            {t('landing.tagline')}
-          </h1>
-          <p className="text-amber-300 font-nunito text-xl font-semibold mb-3">
-            {t('landing.subtitle')}
-          </p>
-          <p className="text-white/50 font-nunito text-sm max-w-md mx-auto">
-            {t('landing.description')}
-          </p>
-        </motion.div>
-
-        {/* Track 1: Foundation */}
+      {/* World doors — shifted right of sidebar on desktop */}
+      <main
+        id="worlds"
+        className="relative z-10 md:ml-60 flex flex-col items-center pt-16 pb-20 px-6"
+        style={{ background: 'linear-gradient(180deg, #0b0726 0%, #080518 100%)' }}
+      >
         <motion.div
           className="w-full max-w-3xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
+          {/* Track 1: Foundation */}
           <div className="flex items-center gap-3 mb-6 justify-center">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
             <div className="text-center">
@@ -64,7 +53,7 @@ export default function HomePage() {
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
           </div>
 
-          <div className="flex justify-center gap-4 md:gap-8 mb-12 flex-wrap">
+          <div className="flex justify-center gap-4 md:gap-8 mb-14 flex-wrap">
             {track1.map((world, i) => (
               <MagicDoor key={world.id} world={world} index={i} />
             ))}
@@ -90,10 +79,10 @@ export default function HomePage() {
         </motion.div>
 
         <motion.p
-          className="text-white/20 font-nunito text-xs mt-16"
+          className="text-white/20 font-nunito text-xs mt-20"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
         >
           chaabi.dev — کھل جا سم سم
         </motion.p>
