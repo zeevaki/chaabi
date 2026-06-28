@@ -75,9 +75,8 @@ body {
 .khul-ja-enter { animation: khul-ja 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards; }
 
 @keyframes revolveKey {
-  0%   { transform: rotateY(0deg)   translateY(0px); }
-  50%  { transform: rotateY(180deg) translateY(-10px); }
-  100% { transform: rotateY(360deg) translateY(0px); }
+  0%   { transform: perspective(1000px) rotateY(0deg); }
+  100% { transform: perspective(1000px) rotateY(360deg); }
 }
 .revolve-key {
   animation: revolveKey 4s linear infinite;
@@ -85,7 +84,7 @@ body {
   transform-style: preserve-3d;
 }
 .revolve-key:hover {
-  animation-duration: 2s;
+  filter: drop-shadow(0 0 40px rgba(255,215,0,0.9)) !important;
 }
 
 .star {

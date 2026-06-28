@@ -26,7 +26,7 @@ export default function HeroAnimation({ onStart }: Props) {
   const mouseRef = useRef<{ x: number | null; y: number | null }>({ x: null, y: null })
   const animIdRef = useRef<number>(0)
   const [doorsOpen, setDoorsOpen] = useState(false)
-  const [fadeOut, setFadeOut] = useState(false)
+  const [isUnlocked, setIsUnlocked] = useState(false)
   const { t } = useLocale()
 
   useEffect(() => {
@@ -104,6 +104,9 @@ export default function HeroAnimation({ onStart }: Props) {
   }, [])
 
   const openSesame = () => {
+    if (isUnlocked) return
+
+    // Burst particles outward
     const canvas = canvasRef.current
     if (canvas) {
       const cx = canvas.width / 2
@@ -116,21 +119,27 @@ export default function HeroAnimation({ onStart }: Props) {
         p.speedY = (dy / dist) * 22
       })
     }
-    setFadeOut(true)
-    setDoorsOpen(true)
-    setTimeout(onStart, 1300)
+
+    // 1. Key glows and fades
+    setIsUnlocked(true)
+
+    // 2. Doors split open after key flash
+    setTimeout(() => setDoorsOpen(true), 600)
+
+    // 3. Navigate after doors finish opening
+    setTimeout(onStart, 2100)
   }
 
   return (
-    <div className="relative w-full h-screen overflow-hidden" style={{ background: '#0b0726' }}>
+    <div className="relative w-full h-screen overflow-hidden" style={{ background: '#0b0c10' }}>
 
-      {/* LEFT DOOR — shows left half of cave image */}
+      {/* LEFT DOOR */}
       <div
         style={{
           position: 'absolute', top: 0, left: 0,
           width: '50%', height: '100%', zIndex: 5, overflow: 'hidden',
           transform: doorsOpen ? 'translateX(-100%)' : 'translateX(0)',
-          transition: 'transform 1.3s cubic-bezier(0.77, 0, 0.175, 1)',
+          transition: 'transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1)',
         }}
       >
         <div style={{ position: 'absolute', top: 0, left: 0, width: '200%', height: '100%' }}>
@@ -138,13 +147,13 @@ export default function HeroAnimation({ onStart }: Props) {
         </div>
       </div>
 
-      {/* RIGHT DOOR — shows right half of cave image */}
+      {/* RIGHT DOOR */}
       <div
         style={{
           position: 'absolute', top: 0, right: 0,
           width: '50%', height: '100%', zIndex: 5, overflow: 'hidden',
           transform: doorsOpen ? 'translateX(100%)' : 'translateX(0)',
-          transition: 'transform 1.3s cubic-bezier(0.77, 0, 0.175, 1)',
+          transition: 'transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1)',
         }}
       >
         <div style={{ position: 'absolute', top: 0, right: 0, width: '200%', height: '100%' }}>
@@ -153,12 +162,7 @@ export default function HeroAnimation({ onStart }: Props) {
       </div>
 
       {/* Particle canvas */}
-      <div
-        style={{
-          position: 'absolute', inset: 0, zIndex: 6, pointerEvents: 'none',
-          opacity: fadeOut ? 0 : 1, transition: 'opacity 0.8s ease',
-        }}
-      >
+      <div style={{ position: 'absolute', inset: 0, zIndex: 6, pointerEvents: 'none' }}>
         <canvas ref={canvasRef} style={{ width: '100%', height: '100%', display: 'block' }} />
       </div>
 
@@ -169,19 +173,24 @@ export default function HeroAnimation({ onStart }: Props) {
           display: 'flex', flexDirection: 'column', alignItems: 'center',
           justifyContent: 'center', textAlign: 'center',
           pointerEvents: 'none',
-          opacity: fadeOut ? 0 : 1, transition: 'opacity 0.5s ease',
         }}
       >
-        {/* Ornate key image — the click target */}
+        {/* Revolving key */}
         <button
           onClick={openSesame}
-          className="revolve-key"
+          className={isUnlocked ? '' : 'revolve-key'}
           style={{
             background: 'none', border: 'none', cursor: 'pointer',
             pointerEvents: 'auto',
-            width: 'clamp(80px, 12vw, 140px)',
-            position: 'relative',
-            filter: 'drop-shadow(0 0 20px rgba(255,215,0,0.7)) drop-shadow(0 0 40px rgba(255,165,0,0.4))',
+            height: 'clamp(200px, 35vh, 350px)',
+            width: 'auto',
+            display: 'block',
+            filter: isUnlocked
+              ? 'drop-shadow(0 0 80px rgba(255,215,0,1)) brightness(1.5)'
+              : 'drop-shadow(0 0 20px rgba(255,215,0,0.5))',
+            transform: isUnlocked ? 'scale(1.1) rotateY(0deg)' : undefined,
+            opacity: isUnlocked ? 0 : 1,
+            transition: isUnlocked ? 'all 1s ease' : undefined,
             mixBlendMode: 'screen',
           }}
           aria-label="Enter Chaabi"
@@ -189,23 +198,27 @@ export default function HeroAnimation({ onStart }: Props) {
           <Image
             src="/key.png"
             alt="Golden Key"
-            width={140}
-            height={340}
-            style={{ width: '100%', height: 'auto' }}
+            width={200}
+            height={350}
+            style={{ height: '100%', width: 'auto' }}
             priority
           />
         </button>
 
+        {/* Urdu text */}
         <p
-          className="font-nunito mt-6"
           style={{
-            fontSize: 'clamp(0.75rem, 1.5vw, 0.95rem)',
-            letterSpacing: '2px',
-            color: 'rgba(255,215,0,0.55)',
-            textTransform: 'uppercase',
+            marginTop: '32px',
+            fontSize: 'clamp(2rem, 5vw, 4rem)',
+            color: '#d4af37',
+            textShadow: '0 0 15px rgba(255,215,0,0.4)',
+            fontFamily: 'serif',
+            opacity: isUnlocked ? 0 : 1,
+            transition: 'opacity 0.8s ease',
+            pointerEvents: 'none',
           }}
         >
-          {t('landing.startQuest')}
+          کھل جا سم سم
         </p>
       </div>
     </div>
