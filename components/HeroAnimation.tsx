@@ -1,7 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import { useLocale } from '@/context/LocaleContext'
 
 interface Props {
@@ -13,22 +12,20 @@ interface Particle {
   y: number
   text: string
   baseSize: number
-  size: number
   speedX: number
   speedY: number
   alpha: number
-  glow: number
 }
 
-const SYMBOLS = ['{ }', '</>', '*', '1', '0', '++', 'x', ';']
+const SYMBOLS = ['{ }', '</>', ';', '++', 'x', 'if', 'loop']
 
 export default function HeroAnimation({ onStart }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const particlesRef = useRef<Particle[]>([])
-  const mouseRef = useRef<{ x: number | null; y: number | null; radius: number }>({
-    x: null, y: null, radius: 150,
-  })
+  const mouseRef = useRef<{ x: number | null; y: number | null }>({ x: null, y: null })
   const animIdRef = useRef<number>(0)
+  const [doorsOpen, setDoorsOpen] = useState(false)
+  const [fadeOut, setFadeOut] = useState(false)
   const { t } = useLocale()
 
   useEffect(() => {
@@ -37,23 +34,21 @@ export default function HeroAnimation({ onStart }: Props) {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const createParticle = (): Particle => ({
+    const mkParticle = (): Particle => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       text: SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)],
-      baseSize: Math.random() * 14 + 10,
-      size: Math.random() * 14 + 10,
-      speedX: (Math.random() * 0.6 - 0.3) * 1.5,
-      speedY: (Math.random() * -0.5 - 0.2) * 1.5,
-      alpha: Math.random() * 0.4 + 0.2,
-      glow: Math.random() * 15 + 5,
+      baseSize: Math.random() * 12 + 12,
+      speedX: Math.random() * 0.4 - 0.2,
+      speedY: Math.random() * -0.4 - 0.1,
+      alpha: Math.random() * 0.5 + 0.2,
     })
 
-    const initParticles = () => {
+    const init = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
-      const count = Math.min(Math.floor(canvas.width / 20), 80)
-      particlesRef.current = Array.from({ length: count }, createParticle)
+      const count = Math.min(Math.floor(canvas.width / 25), 70)
+      particlesRef.current = Array.from({ length: count }, mkParticle)
     }
 
     const animate = () => {
@@ -62,174 +57,173 @@ export default function HeroAnimation({ onStart }: Props) {
       particlesRef.current.forEach((p) => {
         p.x += p.speedX
         p.y += p.speedY
-        if (p.y < -30) p.y = canvas.height + 30
-        if (p.x < -30) p.x = canvas.width + 30
-        if (p.x > canvas.width + 30) p.x = -30
+        if (p.y < -20) p.y = canvas.height + 20
+        if (p.x < -20) p.x = canvas.width + 20
+        if (p.x > canvas.width + 20) p.x = -20
 
         if (mouse.x !== null && mouse.y !== null) {
           const dx = mouse.x - p.x
           const dy = mouse.y - p.y
-          const distance = Math.hypot(dx, dy)
-          if (distance < mouse.radius) {
-            const force = (mouse.radius - distance) / mouse.radius
-            p.x += (dx / distance) * force * 2
-            p.y += (dy / distance) * force * 2
-            p.size = p.baseSize + force * 6
-          } else {
-            if (p.size > p.baseSize) p.size -= 0.2
+          const dist = Math.hypot(dx, dy)
+          if (dist < 160) {
+            const force = (160 - dist) / 160
+            p.x += (dx / dist) * force * 3
+            p.y += (dy / dist) * force * 3
           }
         }
 
         ctx.save()
         ctx.globalAlpha = p.alpha
-        ctx.font = `bold ${p.size}px monospace`
-        ctx.fillStyle = Math.round(p.baseSize) % 2 === 0 ? '#00f0ff' : '#bd00ff'
+        ctx.font = `bold ${p.baseSize}px monospace`
+        ctx.fillStyle = Math.round(p.baseSize) % 2 === 0 ? '#00f0ff' : '#a855f7'
         ctx.shadowColor = ctx.fillStyle
-        ctx.shadowBlur = p.glow
+        ctx.shadowBlur = 10
         ctx.fillText(p.text, p.x, p.y)
         ctx.restore()
       })
       animIdRef.current = requestAnimationFrame(animate)
     }
 
-    const onMouseMove = (e: MouseEvent) => {
-      mouseRef.current.x = e.clientX
-      mouseRef.current.y = e.clientY
-    }
-    const onMouseOut = () => {
-      mouseRef.current.x = null
-      mouseRef.current.y = null
-    }
-    const onResize = () => initParticles()
+    const onMouseMove = (e: MouseEvent) => { mouseRef.current = { x: e.clientX, y: e.clientY } }
+    const onMouseOut = () => { mouseRef.current = { x: null, y: null } }
 
     window.addEventListener('mousemove', onMouseMove)
     window.addEventListener('mouseout', onMouseOut)
-    window.addEventListener('resize', onResize)
+    window.addEventListener('resize', init)
 
-    initParticles()
+    init()
     animate()
 
     return () => {
       cancelAnimationFrame(animIdRef.current)
       window.removeEventListener('mousemove', onMouseMove)
       window.removeEventListener('mouseout', onMouseOut)
-      window.removeEventListener('resize', onResize)
+      window.removeEventListener('resize', init)
     }
   }, [])
 
-  const handleStart = () => {
-    const particles = particlesRef.current
+  const openSesame = () => {
+    // Burst particles outward from center
     const canvas = canvasRef.current
     if (canvas) {
       const cx = canvas.width / 2
       const cy = canvas.height / 2
-      particles.forEach((p) => {
+      particlesRef.current.forEach((p) => {
         const dx = p.x - cx
         const dy = p.y - cy
         const dist = Math.hypot(dx, dy) || 1
-        p.speedX = (dx / dist) * 15
-        p.speedY = (dy / dist) * 15
-        p.alpha = 1
+        p.speedX = (dx / dist) * 22
+        p.speedY = (dy / dist) * 22
       })
     }
-    setTimeout(onStart, 600)
+    setFadeOut(true)
+    setDoorsOpen(true)
+    setTimeout(onStart, 1200)
   }
 
-  return (
-    <div className="relative w-full h-screen overflow-hidden"
-      style={{ background: 'radial-gradient(circle at center, #1a0f47 0%, #0b0726 100%)' }}
-    >
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+  const doorStyle = (side: 'left' | 'right'): React.CSSProperties => ({
+    position: 'absolute',
+    top: 0,
+    [side]: 0,
+    width: '50%',
+    height: '100%',
+    zIndex: 5,
+    background: side === 'left'
+      ? 'radial-gradient(circle at 100% 50%, #1a0f47 0%, #0b0726 100%)'
+      : 'radial-gradient(circle at 0% 50%, #1a0f47 0%, #0b0726 100%)',
+    borderRight: side === 'left' ? '1px solid rgba(255,215,0,0.4)' : 'none',
+    borderLeft: side === 'right' ? '1px solid rgba(255,215,0,0.4)' : 'none',
+    transform: doorsOpen
+      ? `translateX(${side === 'left' ? '-100%' : '100%'})`
+      : 'translateX(0)',
+    transition: 'transform 1.2s cubic-bezier(0.77, 0, 0.175, 1)',
+  })
 
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-5 pointer-events-none">
+  return (
+    <div
+      className="relative w-full h-screen overflow-hidden"
+      style={{ background: '#0b0726' }}
+    >
+      {/* Cave doors */}
+      <div style={doorStyle('left')} />
+      <div style={doorStyle('right')} />
+
+      {/* Particle canvas — sits on top of doors */}
+      <div
+        style={{
+          position: 'absolute', inset: 0, zIndex: 6, pointerEvents: 'none',
+          opacity: fadeOut ? 0 : 1, transition: 'opacity 0.8s ease',
+        }}
+      >
+        <canvas ref={canvasRef} style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+
+      {/* Hero content */}
+      <div
+        style={{
+          position: 'absolute', inset: 0, zIndex: 10,
+          display: 'flex', flexDirection: 'column', alignItems: 'center',
+          justifyContent: 'center', textAlign: 'center', padding: '20px',
+          pointerEvents: 'none',
+          opacity: fadeOut ? 0 : 1, transition: 'opacity 0.5s ease',
+        }}
+      >
         <h1
           className="font-cinzel font-black"
           style={{
-            fontSize: 'clamp(3.5rem, 10vw, 7rem)',
-            letterSpacing: '0.08em',
+            fontSize: 'clamp(2.8rem, 8vw, 6rem)',
+            letterSpacing: '0.1em',
             background: 'linear-gradient(45deg, #ffd700, #ff9d00)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            filter: 'drop-shadow(0 0 30px rgba(255,215,0,0.5))',
+            filter: 'drop-shadow(0 0 25px rgba(255,215,0,0.4))',
             lineHeight: 1,
+            marginBottom: '24px',
           }}
         >
           CHAABI
         </h1>
 
-        <p
-          className="font-cinzel font-semibold mb-4 mt-4"
+        {/* Revolving key — the click target */}
+        <button
+          onClick={openSesame}
+          className="revolve-key"
           style={{
-            fontSize: 'clamp(1rem, 3vw, 1.6rem)',
-            letterSpacing: '3px',
-            color: '#cbd5e1',
+            background: 'none', border: 'none', cursor: 'pointer',
+            fontSize: 'clamp(5rem, 10vw, 8rem)',
+            pointerEvents: 'auto',
+            marginBottom: '16px',
+            filter: 'drop-shadow(0 0 15px rgba(255,215,0,0.6))',
+          }}
+          aria-label="Enter Chaabi"
+        >
+          🔑
+        </button>
+
+        <h1
+          className="font-cinzel font-black"
+          style={{
+            fontSize: 'clamp(2.5rem, 7vw, 4.5rem)',
+            background: 'linear-gradient(45deg, #ffd700, #ff9d00)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            filter: 'drop-shadow(0 0 15px rgba(255,215,0,0.3))',
+            marginBottom: '10px',
           }}
         >
           {t('landing.tagline')}
-        </p>
+        </h1>
 
         <p
-          className="font-nunito mb-10 max-w-xl"
-          style={{ fontSize: 'clamp(0.9rem, 2vw, 1.1rem)', color: 'rgba(203,213,225,0.6)', fontWeight: 400 }}
+          className="font-nunito"
+          style={{
+            fontSize: 'clamp(1rem, 2.5vw, 1.4rem)',
+            color: '#cbd5e1',
+            maxWidth: '560px',
+          }}
         >
           {t('landing.description')}
         </p>
-
-        {/* Magical key — click to enter */}
-        <motion.button
-          onClick={handleStart}
-          className="pointer-events-auto flex flex-col items-center gap-3"
-          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-          whileHover={{ scale: 1.12 }}
-          whileTap={{ scale: 0.93 }}
-        >
-          <motion.div
-            animate={{
-              y: [0, -14, 0],
-              rotateZ: [-6, 6, -6],
-              filter: [
-                'drop-shadow(0 0 8px rgba(255,215,0,0.5)) drop-shadow(0 0 2px rgba(255,165,0,0.3))',
-                'drop-shadow(0 0 28px rgba(255,215,0,1)) drop-shadow(0 0 55px rgba(255,140,0,0.6))',
-                'drop-shadow(0 0 8px rgba(255,215,0,0.5)) drop-shadow(0 0 2px rgba(255,165,0,0.3))',
-              ],
-            }}
-            transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <svg width="64" height="154" viewBox="0 0 64 154" fill="none" xmlns="http://www.w3.org/2000/svg">
-              {/* Bow (ring) outer */}
-              <circle cx="32" cy="30" r="24" stroke="url(#kg)" strokeWidth="8" fill="none" />
-              {/* Bow inner hole */}
-              <circle cx="32" cy="30" r="11" stroke="url(#kg)" strokeWidth="4" fill="rgba(255,215,0,0.08)" />
-              {/* Shaft */}
-              <rect x="28" y="52" width="8" height="72" rx="4" fill="url(#kg)" />
-              {/* Teeth */}
-              <rect x="36" y="90"  width="16" height="8" rx="3" fill="url(#kg)" />
-              <rect x="36" y="107" width="11" height="8" rx="3" fill="url(#kg)" />
-              <rect x="36" y="124" width="16" height="8" rx="3" fill="url(#kg)" />
-              <defs>
-                <linearGradient id="kg" x1="0" y1="0" x2="0" y2="154" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%"   stopColor="#ffe566" />
-                  <stop offset="50%"  stopColor="#ffd700" />
-                  <stop offset="100%" stopColor="#cc8800" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </motion.div>
-
-          <motion.span
-            className="font-nunito"
-            style={{
-              fontSize: '0.78rem',
-              letterSpacing: '2.5px',
-              color: 'rgba(255,215,0,0.55)',
-              textTransform: 'uppercase',
-            }}
-            animate={{ opacity: [0.45, 0.9, 0.45] }}
-            transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            {t('landing.startQuest')}
-          </motion.span>
-        </motion.button>
       </div>
     </div>
   )
