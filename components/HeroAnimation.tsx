@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 import { useLocale } from '@/context/LocaleContext'
 
 interface Props {
@@ -174,30 +175,61 @@ export default function HeroAnimation({ onStart }: Props) {
           {t('landing.description')}
         </p>
 
-        <button
+        {/* Magical key — click to enter */}
+        <motion.button
           onClick={handleStart}
-          className="pointer-events-auto font-nunito font-bold flex items-center gap-3 transition-all duration-300"
-          style={{
-            background: 'linear-gradient(135deg, #ffd700 0%, #ff8800 100%)',
-            color: '#0b0726',
-            border: 'none',
-            padding: '18px 40px',
-            fontSize: 'clamp(1rem, 2vw, 1.3rem)',
-            borderRadius: '50px',
-            cursor: 'pointer',
-            boxShadow: '0 0 30px rgba(255,215,0,0.3), inset 0 -4px 0 rgba(0,0,0,0.2)',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'scale(1.08) translateY(-3px)'
-            e.currentTarget.style.boxShadow = '0 0 45px rgba(255,215,0,0.6)'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'scale(1) translateY(0)'
-            e.currentTarget.style.boxShadow = '0 0 30px rgba(255,215,0,0.3), inset 0 -4px 0 rgba(0,0,0,0.2)'
-          }}
+          className="pointer-events-auto flex flex-col items-center gap-3"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+          whileHover={{ scale: 1.12 }}
+          whileTap={{ scale: 0.93 }}
         >
-          <span>🔑</span> {t('landing.startQuest')}
-        </button>
+          <motion.div
+            animate={{
+              y: [0, -14, 0],
+              rotateZ: [-6, 6, -6],
+              filter: [
+                'drop-shadow(0 0 8px rgba(255,215,0,0.5)) drop-shadow(0 0 2px rgba(255,165,0,0.3))',
+                'drop-shadow(0 0 28px rgba(255,215,0,1)) drop-shadow(0 0 55px rgba(255,140,0,0.6))',
+                'drop-shadow(0 0 8px rgba(255,215,0,0.5)) drop-shadow(0 0 2px rgba(255,165,0,0.3))',
+              ],
+            }}
+            transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <svg width="64" height="154" viewBox="0 0 64 154" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Bow (ring) outer */}
+              <circle cx="32" cy="30" r="24" stroke="url(#kg)" strokeWidth="8" fill="none" />
+              {/* Bow inner hole */}
+              <circle cx="32" cy="30" r="11" stroke="url(#kg)" strokeWidth="4" fill="rgba(255,215,0,0.08)" />
+              {/* Shaft */}
+              <rect x="28" y="52" width="8" height="72" rx="4" fill="url(#kg)" />
+              {/* Teeth */}
+              <rect x="36" y="90"  width="16" height="8" rx="3" fill="url(#kg)" />
+              <rect x="36" y="107" width="11" height="8" rx="3" fill="url(#kg)" />
+              <rect x="36" y="124" width="16" height="8" rx="3" fill="url(#kg)" />
+              <defs>
+                <linearGradient id="kg" x1="0" y1="0" x2="0" y2="154" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%"   stopColor="#ffe566" />
+                  <stop offset="50%"  stopColor="#ffd700" />
+                  <stop offset="100%" stopColor="#cc8800" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </motion.div>
+
+          <motion.span
+            className="font-nunito"
+            style={{
+              fontSize: '0.78rem',
+              letterSpacing: '2.5px',
+              color: 'rgba(255,215,0,0.55)',
+              textTransform: 'uppercase',
+            }}
+            animate={{ opacity: [0.45, 0.9, 0.45] }}
+            transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            {t('landing.startQuest')}
+          </motion.span>
+        </motion.button>
       </div>
     </div>
   )
