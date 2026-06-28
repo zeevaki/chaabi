@@ -47,7 +47,6 @@ export default function Sidebar() {
               : 'text-white/60 hover:bg-white/8 hover:text-white'
           }`}
         >
-          <span className="text-base">🏠</span>
           {t('nav.home')}
         </Link>
         <Link
@@ -55,7 +54,6 @@ export default function Sidebar() {
           onClick={() => setMobileOpen(false)}
           className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-nunito font-semibold text-sm text-white/60 hover:bg-white/8 hover:text-white transition-all"
         >
-          <span className="text-base">🗝️</span>
           {t('nav.myKeys')}
           {totalKeys > 0 && (
             <span className="ml-auto bg-yellow-400/20 text-yellow-300 text-xs font-bold px-2 py-0.5 rounded-full">
@@ -68,7 +66,6 @@ export default function Sidebar() {
           onClick={() => setLangDrawerOpen(true)}
           className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl font-nunito font-semibold text-sm text-white/60 hover:bg-white/8 hover:text-white transition-all text-left"
         >
-          <span className="text-base">🌍</span>
           {t('nav.changeLanguage')}
           <span className="ml-auto text-white/25 font-nunito text-xs uppercase tracking-wider">
             {locale.toUpperCase()}

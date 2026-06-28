@@ -28,7 +28,6 @@ export default function LanguagePicker() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="text-7xl mb-4 float">🪔</div>
           <h1
             className="font-cinzel text-5xl md:text-6xl font-black text-gold glow-gold mb-2"
             style={{ letterSpacing: '0.05em' }}
