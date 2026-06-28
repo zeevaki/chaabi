@@ -74,13 +74,17 @@ export default function MagicDoor({ world, index }: Props) {
             />
           )}
 
-          {/* World icon */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-            <span className={`text-4xl md:text-5xl transition-all duration-300 ${!unlocked ? 'grayscale opacity-30' : ''}`}>
-              {unlocked ? world.icon : '🔒'}
-            </span>
-            {unlocked && percent > 0 && (
-              <div className="w-16 h-1.5 bg-white/10 rounded-full overflow-hidden">
+          {/* Lock icon for locked doors only, keyhole handled below for unlocked */}
+          {!unlocked && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-3xl opacity-25">🔒</span>
+            </div>
+          )}
+
+          {/* Progress bar inside door */}
+          {unlocked && percent > 0 && (
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-16">
+              <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
                 <motion.div
                   className={`h-full rounded-full bg-gradient-to-r ${world.color}`}
                   initial={{ width: 0 }}
@@ -88,8 +92,8 @@ export default function MagicDoor({ world, index }: Props) {
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                 />
               </div>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Keyhole */}
           {unlocked && (

@@ -11,7 +11,7 @@ import { htmlMissions } from '@/data/missions/html'
 import { cssMissions } from '@/data/missions/css'
 import { jsMissions } from '@/data/missions/javascript'
 import StarField from '@/components/StarField'
-import XPBar from '@/components/XPBar'
+import Sidebar from '@/components/Sidebar'
 import type { Mission } from '@/data/missions/html'
 
 const missionMap: Record<string, Mission[]> = {
@@ -36,8 +36,8 @@ export default function WorldPage({ params }: { params: Promise<{ worldId: strin
     return (
       <div className="relative min-h-screen flex items-center justify-center">
         <StarField />
-        <div className="relative z-10 text-center">
-          <div className="text-6xl mb-4">🔒</div>
+        <Sidebar />
+        <div className="relative z-10 text-center md:ml-60">
           <h1 className="font-cinzel text-3xl text-white mb-3">{t('worlds.locked')}</h1>
           <p className="text-white/50 font-nunito mb-6">{t('worlds.completePrevious')}</p>
           <Link href="/" className="font-nunito font-bold text-yellow-300 hover:text-yellow-200 underline">
@@ -51,29 +51,15 @@ export default function WorldPage({ params }: { params: Promise<{ worldId: strin
   return (
     <div className="relative min-h-screen">
       <StarField />
+      <Sidebar />
 
-      {/* Nav */}
-      <nav className="relative z-10 flex items-center justify-between px-4 md:px-8 py-4">
-        <Link href="/" className="flex items-center gap-2 text-white/60 hover:text-white font-nunito font-semibold text-sm transition-colors">
-          ← {t('mission.backToWorld')}
-        </Link>
-        <XPBar />
-      </nav>
-
-      <main className="relative z-10 max-w-3xl mx-auto px-4 pb-16">
+      <main className="relative z-10 md:ml-60 max-w-3xl mx-auto px-4 pb-16 pt-4">
         {/* World header */}
         <motion.div
           className="text-center mb-10"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <motion.div
-            className="text-6xl mb-3"
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          >
-            {world.icon}
-          </motion.div>
           <h1 className="font-cinzel text-3xl md:text-4xl font-black text-white mb-1">
             {t(`worlds.${worldId}.name`)}
           </h1>
