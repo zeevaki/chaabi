@@ -58,7 +58,7 @@ function SubmitButton({
     <div className="flex flex-col gap-2">
       {error && (
         <motion.p
-          className="text-red-400 font-nunito text-sm px-2"
+          className="text-red-400 font-nunito text-base px-2"
           initial={{ opacity: 0, y: -5 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -103,25 +103,24 @@ export default function CodeMission({ mission, worldId, nextMissionId, isLastMis
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="flex items-start gap-3 mb-3">
-              <span className="text-2xl">{mission.titleEmoji}</span>
-              <div>
-                <h3 className="font-nunito font-black text-white text-base leading-tight">{mission.title}</h3>
-                <p className="text-yellow-400/80 font-nunito text-xs mt-0.5">{t('mission.objective')}</p>
+            <div className="flex items-start gap-3 mb-4">
+              <div className="flex-1">
+                <h3 className="font-nunito font-black text-white text-xl leading-tight">{mission.title}</h3>
+                <p className="text-yellow-400/80 font-nunito text-sm mt-0.5">{t('mission.objective')}</p>
               </div>
-              <div className="ml-auto flex items-center gap-1 bg-yellow-400/10 rounded-full px-2.5 py-1">
-                <span className="text-yellow-300 font-nunito font-bold text-xs">⚡ {mission.xp} XP</span>
+              <div className="flex items-center gap-1 bg-yellow-400/10 rounded-full px-3 py-1.5">
+                <span className="text-yellow-300 font-nunito font-bold text-sm">⚡ {mission.xp} XP</span>
               </div>
             </div>
 
-            <div className="bg-black/20 rounded-xl p-3 mb-3">
-              <p className="text-purple-300 font-nunito text-xs font-semibold mb-1">💡 {t('mission.concept')}</p>
-              <p className="text-white/70 font-nunito text-xs leading-relaxed">{mission.concept}</p>
+            <div className="bg-black/20 rounded-xl p-4 mb-3">
+              <p className="text-purple-300 font-nunito text-sm font-semibold mb-2">{t('mission.concept')}</p>
+              <p className="text-white/70 font-nunito text-sm leading-relaxed">{mission.concept}</p>
             </div>
 
-            <div className="bg-yellow-400/5 border border-yellow-400/20 rounded-xl p-3">
-              <p className="text-yellow-200 font-nunito text-xs font-semibold mb-1">🎯 {t('mission.objective')}</p>
-              <pre className="text-white/80 font-nunito text-xs leading-relaxed whitespace-pre-wrap">{mission.instruction}</pre>
+            <div className="bg-yellow-400/5 border border-yellow-400/20 rounded-xl p-4">
+              <p className="text-yellow-200 font-nunito text-sm font-semibold mb-2">{t('mission.objective')}</p>
+              <pre className="text-white/80 font-nunito text-sm leading-relaxed whitespace-pre-wrap">{mission.instruction}</pre>
             </div>
           </motion.div>
 
@@ -134,7 +133,7 @@ export default function CodeMission({ mission, worldId, nextMissionId, isLastMis
           >
             <div className="rounded-2xl overflow-hidden border border-white/10">
               <div className="bg-white/5 px-4 py-2 border-b border-white/10">
-                <span className="text-white/50 font-nunito text-xs">✏️ index.html</span>
+                <span className="text-white/50 font-nunito text-sm">index.html</span>
               </div>
               <div style={{ height: '100%', minHeight: '260px' }}>
                 <SandpackCodeEditor
@@ -148,7 +147,7 @@ export default function CodeMission({ mission, worldId, nextMissionId, isLastMis
 
             <div className="rounded-2xl overflow-hidden border border-white/10">
               <div className="bg-white/5 px-4 py-2 border-b border-white/10">
-                <span className="text-white/50 font-nunito text-xs">👁️ Live Preview</span>
+                <span className="text-white/50 font-nunito text-sm">Live Preview</span>
               </div>
               <SandpackPreview style={{ height: '260px' }} showNavigator={false} />
             </div>

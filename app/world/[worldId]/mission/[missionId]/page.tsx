@@ -51,7 +51,7 @@ export default function MissionPage({
           </Link>
 
           <div className="flex items-center gap-3">
-            <span className="text-white/30 font-nunito text-xs">
+            <span className="text-white/30 font-nunito text-sm">
               {t('mission.mission')} {mission.order} {t('mission.of')} {missions.length}
             </span>
             <div className="flex gap-1">
@@ -77,10 +77,10 @@ export default function MissionPage({
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="font-cinzel text-xl md:text-2xl font-black text-white">
+          <h1 className="font-cinzel text-2xl md:text-3xl font-black text-white">
             {mission.title}
           </h1>
-          <p className="text-white/40 font-nunito text-xs mt-0.5">
+          <p className="text-white/40 font-nunito text-sm mt-1">
             {t('mission.mission')} {mission.order} — ⚡ {mission.xp} XP
           </p>
         </motion.div>
