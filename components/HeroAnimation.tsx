@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import Key3D from './Key3D'
 
 interface Props {
   onStart: () => void
@@ -174,34 +175,7 @@ export default function HeroAnimation({ onStart }: Props) {
           pointerEvents: 'none',
         }}
       >
-        {/* Revolving key */}
-        <button
-          onClick={openSesame}
-          className={isUnlocked ? '' : 'revolve-key'}
-          style={{
-            background: 'none', border: 'none', cursor: 'pointer',
-            pointerEvents: 'auto',
-            height: 'clamp(200px, 35vh, 350px)',
-            width: 'auto',
-            display: 'block',
-            filter: isUnlocked
-              ? 'drop-shadow(0 0 80px rgba(255,215,0,1)) brightness(1.5)'
-              : 'drop-shadow(0 0 20px rgba(255,215,0,0.5))',
-            transform: isUnlocked ? 'scale(1.1) rotateY(0deg)' : undefined,
-            opacity: isUnlocked ? 0 : 1,
-            transition: isUnlocked ? 'all 1s ease' : undefined,
-          }}
-          aria-label="Enter Chaabi"
-        >
-          <Image
-            src="/key.png"
-            alt="Golden Key"
-            width={200}
-            height={350}
-            style={{ height: '100%', width: 'auto' }}
-            priority
-          />
-        </button>
+        <Key3D isUnlocked={isUnlocked} onClick={openSesame} />
 
       </div>
     </div>
