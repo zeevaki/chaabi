@@ -45,7 +45,7 @@ export default function LanguagePicker() {
           transition={{ delay: 0.3 }}
         >
           <p className="text-white/80 text-xl font-nunito font-semibold">
-            🌍 Choose Your Language / اپنی زبان چنیں
+            Choose Your Language / اپنی زبان چنیں
           </p>
         </motion.div>
 
