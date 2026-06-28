@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import { useLocale } from '@/context/LocaleContext'
 
 interface Props {
@@ -103,7 +104,6 @@ export default function HeroAnimation({ onStart }: Props) {
   }, [])
 
   const openSesame = () => {
-    // Burst particles outward from center
     const canvas = canvasRef.current
     if (canvas) {
       const cx = canvas.width / 2
@@ -118,37 +118,41 @@ export default function HeroAnimation({ onStart }: Props) {
     }
     setFadeOut(true)
     setDoorsOpen(true)
-    setTimeout(onStart, 1200)
+    setTimeout(onStart, 1300)
   }
 
-  const doorStyle = (side: 'left' | 'right'): React.CSSProperties => ({
-    position: 'absolute',
-    top: 0,
-    [side]: 0,
-    width: '50%',
-    height: '100%',
-    zIndex: 5,
-    background: side === 'left'
-      ? 'radial-gradient(circle at 100% 50%, #1a0f47 0%, #0b0726 100%)'
-      : 'radial-gradient(circle at 0% 50%, #1a0f47 0%, #0b0726 100%)',
-    borderRight: side === 'left' ? '1px solid rgba(255,215,0,0.4)' : 'none',
-    borderLeft: side === 'right' ? '1px solid rgba(255,215,0,0.4)' : 'none',
-    transform: doorsOpen
-      ? `translateX(${side === 'left' ? '-100%' : '100%'})`
-      : 'translateX(0)',
-    transition: 'transform 1.2s cubic-bezier(0.77, 0, 0.175, 1)',
-  })
-
   return (
-    <div
-      className="relative w-full h-screen overflow-hidden"
-      style={{ background: '#0b0726' }}
-    >
-      {/* Cave doors */}
-      <div style={doorStyle('left')} />
-      <div style={doorStyle('right')} />
+    <div className="relative w-full h-screen overflow-hidden" style={{ background: '#0b0726' }}>
 
-      {/* Particle canvas — sits on top of doors */}
+      {/* LEFT DOOR — shows left half of cave image */}
+      <div
+        style={{
+          position: 'absolute', top: 0, left: 0,
+          width: '50%', height: '100%', zIndex: 5, overflow: 'hidden',
+          transform: doorsOpen ? 'translateX(-100%)' : 'translateX(0)',
+          transition: 'transform 1.3s cubic-bezier(0.77, 0, 0.175, 1)',
+        }}
+      >
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '200%', height: '100%' }}>
+          <Image src="/cave.png" alt="" fill style={{ objectFit: 'cover', objectPosition: 'left center' }} priority />
+        </div>
+      </div>
+
+      {/* RIGHT DOOR — shows right half of cave image */}
+      <div
+        style={{
+          position: 'absolute', top: 0, right: 0,
+          width: '50%', height: '100%', zIndex: 5, overflow: 'hidden',
+          transform: doorsOpen ? 'translateX(100%)' : 'translateX(0)',
+          transition: 'transform 1.3s cubic-bezier(0.77, 0, 0.175, 1)',
+        }}
+      >
+        <div style={{ position: 'absolute', top: 0, right: 0, width: '200%', height: '100%' }}>
+          <Image src="/cave.png" alt="" fill style={{ objectFit: 'cover', objectPosition: 'right center' }} priority />
+        </div>
+      </div>
+
+      {/* Particle canvas */}
       <div
         style={{
           position: 'absolute', inset: 0, zIndex: 6, pointerEvents: 'none',
@@ -163,66 +167,61 @@ export default function HeroAnimation({ onStart }: Props) {
         style={{
           position: 'absolute', inset: 0, zIndex: 10,
           display: 'flex', flexDirection: 'column', alignItems: 'center',
-          justifyContent: 'center', textAlign: 'center', padding: '20px',
+          justifyContent: 'center', textAlign: 'center',
           pointerEvents: 'none',
           opacity: fadeOut ? 0 : 1, transition: 'opacity 0.5s ease',
         }}
       >
+        {/* CHAABI title */}
         <h1
           className="font-cinzel font-black"
           style={{
-            fontSize: 'clamp(2.8rem, 8vw, 6rem)',
+            fontSize: 'clamp(2.5rem, 7vw, 5.5rem)',
             letterSpacing: '0.1em',
             background: 'linear-gradient(45deg, #ffd700, #ff9d00)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            filter: 'drop-shadow(0 0 25px rgba(255,215,0,0.4))',
+            filter: 'drop-shadow(0 0 20px rgba(255,215,0,0.5))',
             lineHeight: 1,
-            marginBottom: '24px',
+            marginBottom: '28px',
           }}
         >
           CHAABI
         </h1>
 
-        {/* Revolving key — the click target */}
+        {/* Ornate key image — the click target */}
         <button
           onClick={openSesame}
           className="revolve-key"
           style={{
             background: 'none', border: 'none', cursor: 'pointer',
-            fontSize: 'clamp(5rem, 10vw, 8rem)',
             pointerEvents: 'auto',
-            marginBottom: '16px',
-            filter: 'drop-shadow(0 0 15px rgba(255,215,0,0.6))',
+            width: 'clamp(80px, 12vw, 140px)',
+            position: 'relative',
+            filter: 'drop-shadow(0 0 20px rgba(255,215,0,0.7)) drop-shadow(0 0 40px rgba(255,165,0,0.4))',
           }}
           aria-label="Enter Chaabi"
         >
-          🔑
+          <Image
+            src="/key.png"
+            alt="Golden Key"
+            width={140}
+            height={340}
+            style={{ width: '100%', height: 'auto' }}
+            priority
+          />
         </button>
 
-        <h1
-          className="font-cinzel font-black"
-          style={{
-            fontSize: 'clamp(2.5rem, 7vw, 4.5rem)',
-            background: 'linear-gradient(45deg, #ffd700, #ff9d00)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            filter: 'drop-shadow(0 0 15px rgba(255,215,0,0.3))',
-            marginBottom: '10px',
-          }}
-        >
-          {t('landing.tagline')}
-        </h1>
-
         <p
-          className="font-nunito"
+          className="font-nunito mt-6"
           style={{
-            fontSize: 'clamp(1rem, 2.5vw, 1.4rem)',
-            color: '#cbd5e1',
-            maxWidth: '560px',
+            fontSize: 'clamp(0.75rem, 1.5vw, 0.95rem)',
+            letterSpacing: '2px',
+            color: 'rgba(255,215,0,0.55)',
+            textTransform: 'uppercase',
           }}
         >
-          {t('landing.description')}
+          {t('landing.startQuest')}
         </p>
       </div>
     </div>
