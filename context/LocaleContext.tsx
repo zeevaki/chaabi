@@ -39,11 +39,10 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const savedLocale = localStorage.getItem('chaabi-locale') as Locale | null
-    const savedChosen = localStorage.getItem('chaabi-chosen') === 'true'
     if (savedLocale && ['en', 'ur', 'es', 'hi', 'zh', 'ar'].includes(savedLocale)) {
       setLocaleState(savedLocale)
     }
-    setHasChosen(savedChosen)
+    setHasChosen(true)
     setMounted(true)
   }, [])
 

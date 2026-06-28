@@ -5,19 +5,17 @@ import { motion } from 'framer-motion'
 import { useLocale } from '@/context/LocaleContext'
 import { useProgress } from '@/hooks/useProgress'
 import { worlds } from '@/data/worlds'
-import LanguagePicker from '@/components/LanguagePicker'
 import LanguageDrawer from '@/components/LanguageDrawer'
 import MagicDoor from '@/components/MagicDoor'
 import StarField from '@/components/StarField'
 import Sidebar from '@/components/Sidebar'
 
 export default function HomePage() {
-  const { t, hasChosen } = useLocale()
+  const { t } = useLocale()
   const { mounted } = useProgress()
   const [langOpen, setLangOpen] = useState(false)
 
   if (!mounted) return null
-  if (!hasChosen) return <LanguagePicker />
 
   const track1 = worlds.filter((w) => w.level === 1)
   const track2 = worlds.filter((w) => w.level === 2)
@@ -28,18 +26,9 @@ export default function HomePage() {
       <Sidebar />
       <LanguageDrawer open={langOpen} onClose={() => setLangOpen(false)} />
 
-      {/* Language button — top left, above sidebar */}
-      <button
-        onClick={() => setLangOpen(true)}
-        className="fixed top-4 left-4 z-20 md:hidden font-nunito font-semibold text-sm text-white/60 hover:text-white transition-colors"
-      >
-        {t('nav.changeLanguage')}
-      </button>
-
-      {/* Main content — offset by sidebar width on desktop */}
       <main className="relative z-10 md:ml-60 flex flex-col items-center pt-12 pb-16 px-6">
 
-        {/* Hero text — no icons */}
+        {/* Hero text */}
         <motion.div
           className="text-center mb-12 mt-6"
           initial={{ opacity: 0, y: -20 }}
