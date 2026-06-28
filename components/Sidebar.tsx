@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useLocale } from '@/context/LocaleContext'
 import { useProgress } from '@/hooks/useProgress'
 import { worlds } from '@/data/worlds'
+import LanguageDrawer from './LanguageDrawer'
 
 const WORLD_COLORS: Record<string, string> = {
   html: '#f97316',
@@ -18,9 +19,10 @@ const WORLD_COLORS: Record<string, string> = {
 
 export default function Sidebar() {
   const pathname = usePathname()
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
   const { progress, isWorldUnlocked, getWorldProgress, totalKeys } = useProgress()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [langDrawerOpen, setLangDrawerOpen] = useState(false)
 
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
@@ -61,6 +63,17 @@ export default function Sidebar() {
             </span>
           )}
         </Link>
+
+        <button
+          onClick={() => setLangDrawerOpen(true)}
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl font-nunito font-semibold text-sm text-white/60 hover:bg-white/8 hover:text-white transition-all text-left"
+        >
+          <span className="text-base">🌍</span>
+          {t('nav.changeLanguage')}
+          <span className="ml-auto text-white/25 font-nunito text-xs uppercase tracking-wider">
+            {locale.toUpperCase()}
+          </span>
+        </button>
       </nav>
 
       {/* Divider */}
@@ -142,6 +155,8 @@ export default function Sidebar() {
 
   return (
     <>
+      <LanguageDrawer open={langDrawerOpen} onClose={() => setLangDrawerOpen(false)} />
+
       {/* Mobile hamburger */}
       <button
         className="fixed top-4 left-4 z-50 md:hidden bg-white/10 border border-white/20 rounded-xl p-2.5 text-white/70 hover:text-white"
