@@ -27,12 +27,9 @@ export default function Sidebar() {
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
       {/* Logo */}
-      <div className="px-6 py-6 border-b border-white/8">
+      <div className="px-6 py-5 border-b border-white/8">
         <Link href="/" onClick={() => setMobileOpen(false)}>
-          <span className="font-cinzel font-black text-2xl text-gold glow-gold tracking-widest">
-            CHAABI
-          </span>
-          <p className="text-white/30 font-nunito text-xs mt-0.5">کھل جا سم سم</p>
+          <p className="text-white/40 font-nunito text-xs">کھل جا سم سم</p>
         </Link>
       </div>
 

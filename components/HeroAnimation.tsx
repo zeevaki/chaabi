@@ -142,23 +142,41 @@ export default function HeroAnimation({ onStart }: Props) {
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-5 pointer-events-none">
         <h1
-          className="font-cinzel font-black mb-4"
+          className="font-cinzel font-black"
           style={{
-            fontSize: 'clamp(2.2rem, 6vw, 4rem)',
-            letterSpacing: '2px',
+            fontSize: 'clamp(3.5rem, 10vw, 7rem)',
+            letterSpacing: '0.08em',
             background: 'linear-gradient(45deg, #ffd700, #ff9d00)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            textShadow: 'none',
-            filter: 'drop-shadow(0 0 20px rgba(255,215,0,0.4))',
+            filter: 'drop-shadow(0 0 30px rgba(255,215,0,0.5))',
+            lineHeight: 1,
           }}
         >
-          {t('landing.tagline')}
+          CHAABI
         </h1>
 
         <p
+          className="font-nunito mb-1 mt-1"
+          style={{ fontSize: 'clamp(0.9rem, 2vw, 1.1rem)', color: 'rgba(255,215,0,0.5)', letterSpacing: '0.1em' }}
+        >
+          چابی
+        </p>
+
+        <p
+          className="font-cinzel font-semibold mb-4 mt-4"
+          style={{
+            fontSize: 'clamp(1rem, 3vw, 1.6rem)',
+            letterSpacing: '3px',
+            color: '#cbd5e1',
+          }}
+        >
+          {t('landing.tagline')}
+        </p>
+
+        <p
           className="font-nunito mb-10 max-w-xl"
-          style={{ fontSize: 'clamp(1rem, 2.5vw, 1.4rem)', color: '#cbd5e1', fontWeight: 400 }}
+          style={{ fontSize: 'clamp(0.9rem, 2vw, 1.1rem)', color: 'rgba(203,213,225,0.6)', fontWeight: 400 }}
         >
           {t('landing.description')}
         </p>
