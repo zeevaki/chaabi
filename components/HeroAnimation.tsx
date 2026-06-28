@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { useLocale } from '@/context/LocaleContext'
 
 interface Props {
   onStart: () => void
@@ -27,7 +26,7 @@ export default function HeroAnimation({ onStart }: Props) {
   const animIdRef = useRef<number>(0)
   const [doorsOpen, setDoorsOpen] = useState(false)
   const [isUnlocked, setIsUnlocked] = useState(false)
-  const { t } = useLocale()
+
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -191,7 +190,6 @@ export default function HeroAnimation({ onStart }: Props) {
             transform: isUnlocked ? 'scale(1.1) rotateY(0deg)' : undefined,
             opacity: isUnlocked ? 0 : 1,
             transition: isUnlocked ? 'all 1s ease' : undefined,
-            mixBlendMode: 'screen',
           }}
           aria-label="Enter Chaabi"
         >
@@ -205,21 +203,6 @@ export default function HeroAnimation({ onStart }: Props) {
           />
         </button>
 
-        {/* Urdu text */}
-        <p
-          style={{
-            marginTop: '32px',
-            fontSize: 'clamp(2rem, 5vw, 4rem)',
-            color: '#d4af37',
-            textShadow: '0 0 15px rgba(255,215,0,0.4)',
-            fontFamily: 'serif',
-            opacity: isUnlocked ? 0 : 1,
-            transition: 'opacity 0.8s ease',
-            pointerEvents: 'none',
-          }}
-        >
-          کھل جا سم سم
-        </p>
       </div>
     </div>
   )
