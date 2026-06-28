@@ -131,7 +131,7 @@ export default function CodeMission({ mission, worldId, nextMissionId, isLastMis
             animate={{ opacity: 1 }}
             transition={{ delay: 0.15 }}
           >
-            <div className="rounded-2xl overflow-hidden border border-white/10">
+            <div className="rounded-2xl overflow-hidden border border-white/10" dir="ltr">
               <div className="bg-white/5 px-4 py-2 border-b border-white/10">
                 <span className="text-white/50 font-nunito text-sm">index.html</span>
               </div>
@@ -145,7 +145,7 @@ export default function CodeMission({ mission, worldId, nextMissionId, isLastMis
               </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden border border-white/10">
+            <div className="rounded-2xl overflow-hidden border border-white/10" dir="ltr">
               <div className="bg-white/5 px-4 py-2 border-b border-white/10">
                 <span className="text-white/50 font-nunito text-sm">Live Preview</span>
               </div>
