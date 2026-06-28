@@ -37,7 +37,7 @@ export default function WorldPage({ params }: { params: Promise<{ worldId: strin
       <div className="relative min-h-screen flex items-center justify-center">
         <StarField />
         <Sidebar />
-        <div className="relative z-10 text-center md:ml-60">
+        <div className="relative z-10 text-center md:ml-48">
           <h1 className="font-cinzel text-3xl text-white mb-3">{t('worlds.locked')}</h1>
           <p className="text-white/50 font-nunito mb-6">{t('worlds.completePrevious')}</p>
           <Link href="/" className="font-nunito font-bold text-yellow-300 hover:text-yellow-200 underline">
@@ -53,7 +53,7 @@ export default function WorldPage({ params }: { params: Promise<{ worldId: strin
       <StarField />
       <Sidebar />
 
-      <main className="relative z-10 md:ml-60 max-w-3xl mx-auto px-4 pb-16 pt-4">
+      <main className="relative z-10 md:ml-48 max-w-3xl mx-auto px-4 pb-16 pt-4">
         {/* World header */}
         <motion.div
           className="text-center mb-10"

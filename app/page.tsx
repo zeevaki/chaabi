@@ -31,7 +31,7 @@ export default function HomePage() {
       {/* World doors — shifted right of sidebar on desktop */}
       <main
         id="worlds"
-        className="relative z-10 md:ml-60 flex flex-col items-center pt-16 pb-20 px-6"
+        className="relative z-10 md:ml-48 flex flex-col items-center pt-16 pb-20 px-6"
         style={{ background: 'linear-gradient(180deg, #0b0726 0%, #080518 100%)' }}
       >
         <motion.div

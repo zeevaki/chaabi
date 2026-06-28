@@ -40,7 +40,7 @@ export default function MissionPage({
       <StarField />
       <Sidebar />
 
-      <div className="md:ml-60 flex flex-col flex-1">
+      <div className="md:ml-48 flex flex-col flex-1">
         {/* Top bar */}
         <nav className="relative z-10 flex items-center justify-between px-4 md:px-6 py-3 border-b border-white/8 bg-black/20 backdrop-blur-sm flex-shrink-0">
           <Link

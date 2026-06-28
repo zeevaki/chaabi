@@ -36,7 +36,7 @@ export default function Sidebar() {
         <Link
           href="/"
           onClick={() => setMobileOpen(false)}
-          className={`flex items-center gap-3 px-3 py-2.5 rounded-xl font-nunito font-semibold text-sm transition-all ${
+          className={`flex items-center gap-3 px-3 py-2.5 rounded-xl font-nunito font-semibold text-[0.9rem] transition-all ${
             pathname === '/'
               ? 'bg-yellow-400/15 text-yellow-300'
               : 'text-white/60 hover:bg-white/8 hover:text-white'
@@ -47,7 +47,7 @@ export default function Sidebar() {
         <Link
           href="/"
           onClick={() => setMobileOpen(false)}
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-nunito font-semibold text-sm text-white/60 hover:bg-white/8 hover:text-white transition-all"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-nunito font-semibold text-[0.9rem] text-white/60 hover:bg-white/8 hover:text-white transition-all"
         >
           {t('nav.myKeys')}
           {totalKeys > 0 && (
@@ -59,7 +59,7 @@ export default function Sidebar() {
 
         <button
           onClick={() => setLangDrawerOpen(true)}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl font-nunito font-semibold text-sm text-white/60 hover:bg-white/8 hover:text-white transition-all text-left"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl font-nunito font-semibold text-[0.9rem] text-white/60 hover:bg-white/8 hover:text-white transition-all text-left"
         >
           {t('nav.changeLanguage')}
           <span className="ml-auto text-white/25 font-nunito text-xs uppercase tracking-wider">
@@ -100,7 +100,7 @@ export default function Sidebar() {
                       style={{ backgroundColor: done === total && total > 0 ? '#4ade80' : color }}
                     />
                     <div className="flex-1 min-w-0">
-                      <p className="font-nunito font-semibold text-xs truncate">
+                      <p className="font-nunito font-semibold text-[0.8rem] truncate">
                         {t(`worlds.${world.id}.name`)}
                       </p>
                       {percent > 0 && (
@@ -117,7 +117,7 @@ export default function Sidebar() {
                 ) : (
                   <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl opacity-35 cursor-not-allowed">
                     <div className="w-2 h-2 rounded-full bg-white/20 flex-shrink-0" />
-                    <p className="font-nunito font-semibold text-xs text-white/40 truncate flex-1">
+                    <p className="font-nunito font-semibold text-[0.8rem] text-white/40 truncate flex-1">
                       {t(`worlds.${world.id}.name`)}
                     </p>
                     <span className="text-white/20 text-xs">🔒</span>
@@ -171,11 +171,11 @@ export default function Sidebar() {
               onClick={() => setMobileOpen(false)}
             />
             <motion.aside
-              className="fixed left-0 top-0 bottom-0 w-64 z-50 md:hidden border-r border-white/8"
+              className="fixed left-0 top-0 bottom-0 w-52 z-50 md:hidden border-r border-white/8"
               style={{ background: 'linear-gradient(180deg, #120229 0%, #07011a 100%)' }}
-              initial={{ x: -264 }}
+              initial={{ x: -208 }}
               animate={{ x: 0 }}
-              exit={{ x: -264 }}
+              exit={{ x: -208 }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
               <SidebarContent />
@@ -186,7 +186,7 @@ export default function Sidebar() {
 
       {/* Desktop sidebar */}
       <aside
-        className="hidden md:flex fixed left-0 top-0 bottom-0 w-60 flex-col border-r border-white/8 z-30"
+        className="hidden md:flex fixed left-0 top-0 bottom-0 w-48 flex-col border-r border-white/8 z-30"
         style={{ background: 'linear-gradient(180deg, #120229 0%, #07011a 100%)' }}
       >
         <SidebarContent />
